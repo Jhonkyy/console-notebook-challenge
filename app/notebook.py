@@ -40,3 +40,7 @@ class Notebook:
             if note.code == code:
                 del self.notes[i]
                 break
+
+    def important_notes(self) -> list[Note]:
+        return [note for note in self.notes if note.importance in ("HIGH", "MEDIUM")]
+
