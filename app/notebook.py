@@ -27,14 +27,16 @@ class Notebook:
     def __init__(self):
         self.notes: list[Note] = []
 
-    def add_note(self, title: str, text: str, importance: str) -> int:
-        new_code = len(self.notes) + 1
-        existing_codes = {note.code for note in self.notes}
-
-        while new_code in existing_codes:
+    def add_note(self, title: str, text: str, importance: str) -> Note:
+        new_code = len(self.notes)
+        while new_code not in self.notes:
             new_code += 1
-
         new_note = Note(new_code, title, text, importance)
         self.notes.append(new_note)
+        return new_note
 
-        return new_code
+    def delete_note(self, code: int):
+        for i, note in enumerate(self.notes):
+            if note.code == code:
+                del self.notes[i]
+                break
