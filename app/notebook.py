@@ -44,3 +44,5 @@ class Notebook:
     def important_notes(self) -> list[Note]:
         return [note for note in self.notes if note.importance in ("HIGH", "MEDIUM")]
 
+    def notes_by_tag(self, tag: str) -> list[Note]:
+        return [note for note in self.notes if tag in note.text]
